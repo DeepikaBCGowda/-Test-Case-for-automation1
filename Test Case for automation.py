@@ -40,5 +40,7 @@ for j in range(0,count1):
     name=name.replace("\n"," ")
     if name == "was 125GB 250GB Essential Plan was £27 £18.90 Per month":
         print("Validation successful")
+driver.close()        
+        
     
           
