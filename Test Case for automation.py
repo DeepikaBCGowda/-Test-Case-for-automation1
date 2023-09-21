@@ -23,19 +23,22 @@ else:
 
 sim_only = driver.find_element(By.XPATH,"//*[@id='__next']/div/div[5]/div[2]/div[1]/div/div/div/div[2]/div/div[3]/a")
 driver.execute_script("arguments[0].scrollIntoView();",sim_only)
-time.sleep(5)
+time.sleep(2)
 driver.find_element(By.XPATH,"//*[@id='__next']/div/div[5]/div[2]/div[1]/div/div/div/div[2]/div/div[3]/a").click()
 if driver.title == "SIM Only Deals | Compare SIMO Plans & Contracts | BT Mobile":
     print('Title: ' ,driver.title)
     print('Url:', driver.current_url)    
-class_count1 = driver.find_elements(By.CLASS_NAME, 'simo-card-ee_social_norm__3lfdT')
-class_count2 = driver.find_elements(By.CLASS_NAME, 'simo-card-ee_text_container__30ltg')
-
-count=0
-for item in class_count1:
-    if item.text=="30% off and double data":
-        for i in class_count2:
-            if ("was 125GB" and "250GB") in i.text:
-                count=count+1  
-print(count)  
-driver.close() 
+class_count4 = driver.find_element(By.XPATH,"//*[@id='__next']/div/div[4]/div[2]/div/div[1]/div[2]/button[5]").click()
+class_count5 = driver.find_elements(By.CLASS_NAME, 'simo-card-ee_social_norm__3lfdT')
+class_count6 = driver.find_elements(By.CLASS_NAME, 'simo-card-ee_plan_details__1G4nS')
+count1=0
+for i in class_count5:
+    if i.text=="30% off and double data":
+        count1=count1+1
+for j in range(0,count1):
+    name=class_count6[j].text
+    name=name.replace("\n"," ")
+    if name == "was 125GB 250GB Essential Plan was £27 £18.90 Per month":
+        print("Validation successful")
+    
+          
